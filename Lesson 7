@@ -98,10 +98,10 @@ int main()
 //=========Первая часть ДЗ=======================
 
 	printf("Quick sort: \n");
-    initArr(array, SIZE);
+    	initArr(array, SIZE);
 	printArr(array, SIZE);
-    quickSort(array, 0, SIZE - 1);
-    printArr (array, SIZE);
+    	quickSort(array, 0, SIZE - 1);
+    	printArr (array, SIZE);
 
 //=========Вторая часть ДЗ=======================
 
