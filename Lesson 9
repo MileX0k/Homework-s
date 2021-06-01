@@ -34,16 +34,19 @@ void ins (int pr, int dat)
         printf ("%s \n", "Queue is full ");
 
     arr[++tail] = node;
-
+    tail %= SZ;
 
     for (int i = 0; i < SZ; i++)
     {
+
         if (arr[i] == NULL)
             arr[i] = node;
-    }
 
-    if (tail == SZ - 1)
-        tail = - 1;
+    }
+        if (tail == SZ - 1)
+        {
+           tail = -2;
+        }
 
         items++;
         head++;
@@ -163,7 +166,7 @@ int main() {
     printQueue();
 
     ins (6, 60);
-    ins (7, 50);
+    ins (4, 80);
     printQueue();
 
 
