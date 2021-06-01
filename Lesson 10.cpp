@@ -45,7 +45,7 @@ bool func(char* str, int n) {
     }
 }
 
-int main(void) {
+int main() {
     char test[] = "(a[i] if(0) [14[],5] [{}])";
     printf("%s", (func(test, strlen(test))) ? "OK" : "FAIL");
     return 0;
