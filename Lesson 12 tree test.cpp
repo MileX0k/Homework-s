@@ -68,86 +68,6 @@ void printTree(TreeNode* root)
     }
 }
 
-TreeNode* getSuccessor(TreeNode* node)
-{
-    TreeNode* current = node->right;
-    TreeNode* parent = node;
-    TreeNode* s = node;
-
-    while (current != NULL)
-    {
-        parent = s;
-        s = current;
-        current = current->left;
-    }
-    if (s != node->right)
-    {
-        parent->left = s->right;
-        s->right = node->right;
-    }
-    return s;
-
-}
-
-boolean deleteTree(TreeNode* root, int key)
-{
-    TreeNode* current = root;
-    TreeNode* parent = root;
-    boolean isLeftChild = true;
-
-    while (current->key != key)
-    {
-        parent = current;
-        if (key < current->key)
-        {
-            current = current->left;
-            isLeftChild = true;
-        }
-        else
-        {
-            current = current->right;
-            isLeftChild = false;
-        }
-        if (current == NULL)
-            return false;
-    }
-
-    if (current->left == NULL && current->right == NULL)
-    {
-        if (current == root)
-            root = NULL;
-        else if (isLeftChild)
-            parent->left = NULL;
-        else
-            parent->right = NULL;
-    }
-    else if (current->right == NULL)
-    {
-        if (isLeftChild)
-            parent->left = current->left;
-        else parent->right = current->left;
-
-    }
-    else if (current->left == NULL)
-    {
-        if (isLeftChild)
-            parent->left = current->right;
-        else parent->right = current->right;
-    }
-    else
-    {
-        TreeNode* successor = getSuccessor(current);
-        if (current == root)
-            root = successor;
-        else if (isLeftChild)
-            parent->left = successor;
-        else
-            parent->right = successor;
-        successor->left = current->left;
-    }
-    return true;
-}
-
 int sum = 0;
 int calcElemTree(TreeNode* tree)
 {
@@ -221,13 +141,13 @@ boolean isBalanced(TreeNode* root)
 
 ////////////////////////==TASK 2==/////////////////////////////////////////////////////////////////
 
-int r = 1;
+float r = 0;
 int createRoot()
 {
-    TreeNode* tr = treeInsert(NULL, rand() % 100 + 1);
-    for (int j = 0; j < 10; j++)
-        treeInsert(tr, rand() % 40 + 1);
-    printTree(tr);
+    TreeNode* tr = treeInsert(NULL, rand() % 10000 + 1);
+    for (int j = 0; j < 10000; j++)
+        treeInsert(tr, rand() % 50000 + 1);
+    //printTree(tr); // Чтоб не печатать все деревья в консоль
     printf("\n");
     calcElemTree(tr);
     printf("Elements: %d \n", sum);
@@ -254,36 +174,50 @@ int main()
     calcElemTree(tree);
     printf("Elements: %d \n", sum);
     resetSum();
+    printf("\n");
+
     ////////////////////////==TASK 4==/////////////////////////////////////////////////////////////////
-    int h = 11;
+    printf("           TASK 4:\n");
+    int h = 70;
     searchData(tree, h);
+    printf("\n");
     printf("\n");
 
     ////////////////////////==TASK 1==/////////////////////////////////////////////////////////////////
+
+    printf("           TASK 1:\n");
     if (isBalanced(tree))
         printf("Tree is balanced");
     else
         printf("Tree is not balanced");
     printf("\n");
+
     ////////////////////////==TASK 2==/////////////////////////////////////////////////////////////////
-    unsigned int arrayTree[10];
-    for (size_t i = 0; i < 10; i++)
+
+    printf("           TASK 2:\n");
+    unsigned int arrayTree[50];
+    for (size_t i = 0; i < 50; i++)
     {
         arrayTree[i] = (unsigned int)malloc(50 * sizeof(unsigned int));
     }
 
-    for (size_t i = 0; i < 10; i++)
+    for (size_t i = 0; i < 50; i++)
     {
         arrayTree[i] = createRoot();
     }
+    printf("\n");
     ////////////////////////==TASK 3==/////////////////////////////////////////////////////////////////
-   
-    //float ye;
 
-    //ye = r/0,1;
+    printf("           TASK 3:\n");
+    float ye;
+    if (r != 0)
+        ye = r / 0, 5;
+    else ye = 0;
 
-    //printf("Persent: %f", ye);
-    
+    printf("Persent:  %f", ye);
+
+    printf("\n");
+
 
 
     return 0;
