@@ -19,34 +19,34 @@ public:
 		:name (n), age (a), gender (g), weight (w) {
 	};
 
-
-
-
 	void Print()
 	{
 		cout << "Name: " << name << "\n" << "Age: " << age << "\n" << "Gender: " << gender << "\n" << "Weight: " << weight << "\n";
-
 	}
 };
 
+int sumStud = 0;
 
 
 class Student : public Person
 {
 public:
 	int studAge;
-	int sumStud = 0;    // ДОДЕЛАТЬ СЧЁТЧИК!!
-
+	
 	Student(string n, int a, char g, int w, int stA)
 		: Person(n, a, g, w), studAge(stA)
-	{ };
+	{
+		sumStud++;
+	};
 
 	void Print()
 	{
-		sumStud++;
-		cout << endl << "Student  " << sumStud << ":" << endl;
+		cout << endl << "Student:  " << endl;
 		Person::Print();
-		cout << "Year of study: " << studAge << "\n";
+		cout << "Year of study: " << studAge << "\n";		
+		
+		cout << endl << "Total students:  " << sumStud << endl;
+
 	}
 };
 
@@ -60,7 +60,6 @@ int main()
 	//===========================================TASK 1================================================
 	cout << "    TASK 1:     " << endl << endl;
 
-
 	Person person1{"Petr", 23, 'M', 78 };
 	person1.Print();
 
@@ -68,9 +67,10 @@ int main()
 	Student student2{ "Lena", 20, 'F', 48, 2011 };
 	Student student3{ "Kirill", 19, 'M', 83, 2009 };
 	Student student4{ "Kate", 23, 'F', 50, 2007 };
+
 	
-	student4.Print();
-	
+	student3.Print();
+	sumStud = 0;
 	
 	//===========================================TASK 2================================================
 
