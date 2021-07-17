@@ -62,24 +62,88 @@ public:
 
 };
 
+//===========================================TASK 3================================================
 
+class Stack
+{
+private:
+	int sizeS = 10;
+	int * array;
+	int idx = 0;
+
+public:
+
+	void reset()
+	{
+		idx = 0;
+		array = new int [sizeS];
+	}
+
+	void push(int num)
+	{
+		if (idx < sizeS)
+		{
+			array[idx] = num;
+			idx++;
+		}
+		else cout << "Error! Stack overflow!" << endl;
+	}
+
+	void pop()
+	{
+		if (idx == 0)
+			cout << "Error! Stack is empty!" << endl;
+		else idx--;
+	}
+
+
+	void print()
+	{
+		cout << "( ";
+		for (int i = 0; i < idx; i++)
+		{
+			cout << array[i] << " ";
+		}
+		cout << ")";
+		cout << endl;
+	}
+};
 
 int main()
 {
-	//===========================================TASK 1================================================
+//===========================================TASK 1================================================
 	cout << "    TASK 1:    " << endl;
 	Power power;
 	power.setPower();
 	power.calculate();
 	cout << endl;
 
-	//===========================================TASK 2================================================
+//===========================================TASK 2================================================
 	cout << "    TASK 2:    " << endl;
 	RGBA color;
 	color.print();
 	cout << endl;
 	RGBA color2(10, 111, 202, 160);
 	color2.print();
+	cout << endl;
+
+//===========================================TASK 3================================================
+	cout << "    TASK 3:    " << endl;
+	Stack stack;
+	stack.reset();
+	stack.print();
+
+	stack.push(3);
+	stack.push(7);
+	stack.push(5);
+	stack.print();
+
+	stack.pop();
+	stack.print();
+
+	stack.pop();
+	stack.pop();
+	stack.print();
 
 
 	return 0;
