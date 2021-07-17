@@ -1,1 +1,1 @@
-# Homework-s GeekBrains Algorithms and data struvtures
+# Homework-s GeekBrains Algorithms and data structures
